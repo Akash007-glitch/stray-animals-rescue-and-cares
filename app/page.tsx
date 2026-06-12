@@ -301,12 +301,10 @@ export default function Home() {
         )}
 
         {/* Main Floating Capsule Navbar */}
-        <div className={`w-full transition-all duration-300 ${scrolled ? "py-2 bg-[#FAF7F2] border-b border-terracotta/20 shadow-md" : "py-4 md:py-6"}`}>
-          <div className={`max-w-6xl mx-auto px-6 ${!scrolled ? "md:px-2" : ""}`}>
-            <div className={`transition-all duration-300 ${
-              scrolled 
-                ? "flex items-center justify-between w-full" 
-                : "bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-charcoal/5 py-4 px-8 flex items-center justify-between w-full max-w-6xl mx-auto"
+        <div className={`w-full transition-all duration-300 ${scrolled ? "py-2" : "py-4 md:py-6"}`}>
+          <div className="max-w-6xl mx-auto px-6">
+            <div className={`transition-all duration-300 bg-white/95 backdrop-blur-md rounded-full border border-charcoal/5 flex items-center justify-between w-full max-w-6xl mx-auto ${
+              scrolled ? "py-2.5 px-6 shadow-md" : "py-4 px-8 shadow-lg"
             }`}>
               {/* Brand Logo */}
               <a onClick={() => scrollSmoothTo("home")} className="cursor-pointer flex items-center gap-2">
@@ -340,11 +338,10 @@ export default function Home() {
                   <button
                     key={item.label}
                     onClick={() => scrollSmoothTo(item.target)}
-                    className={`text-sm tracking-wide transition-colors hover:text-coral cursor-pointer ${
-                      activeSection === item.target
-                        ? "text-coral font-bold border-b-2 border-coral pb-0.5"
-                        : "text-charcoal/80"
-                    }`}
+                    className={`text-sm tracking-wide transition-colors hover:text-coral cursor-pointer ${activeSection === item.target
+                      ? "text-coral font-bold border-b-2 border-coral pb-0.5"
+                      : "text-charcoal/80"
+                      }`}
                   >
                     {item.label}
                   </button>
@@ -386,9 +383,8 @@ export default function Home() {
               <button
                 key={item.label}
                 onClick={() => scrollSmoothTo(item.target)}
-                className={`text-left text-lg font-serif font-bold py-2 border-b border-terracotta/10 cursor-pointer ${
-                  activeSection === item.target ? "text-coral" : "text-charcoal"
-                }`}
+                className={`text-left text-lg font-serif font-bold py-2 border-b border-terracotta/10 cursor-pointer ${activeSection === item.target ? "text-coral" : "text-charcoal"
+                  }`}
               >
                 {item.label}
               </button>
@@ -404,7 +400,7 @@ export default function Home() {
       </header>
 
       {/* HERO SECTION */}
-      <section id="home" className="relative bg-[#EBF0F6] lg:h-[100vh] min-h-[780px] pt-40 lg:pt-48 pb-0 flex flex-col justify-between overflow-hidden">
+      <section id="home" className="relative bg-[#EBF0F6] lg:h-[100vh] min-h-[900px] pt-40 lg:pt-48 pb-0 flex flex-col justify-between overflow-hidden">
         {/* Topographic organic background styling */}
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -418,15 +414,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full z-10 relative flex-1">
           {/* Left Column: Heading & CTAs */}
           <div className="lg:col-span-6 space-y-8 text-left animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-serif font-black text-navy leading-[1.15] tracking-tight">
-              Helping Animals,<br />
+            <h1 className="text-4xl md:text-5xl lg:text-[50px] font-serif font-black text-navy leading-[1.15] tracking-tight">
+              Helping Stray Animals,<br />
               Building{" "}
-              <span className="inline-flex items-center align-middle bg-[#D3E3F1] border border-charcoal/10 rounded-full px-2 py-0.5 mx-1 h-[45px] w-[90px] overflow-hidden relative shadow-inner">
+              {/* <span className="inline-flex items-center align-middle bg-[#D3E3F1] border border-charcoal/10 rounded-full px-2 py-0.5 mx-1 h-[45px] w-[90px] overflow-hidden relative shadow-inner">
                 <Image src="/images/dog_kopili.png" alt="small dog inline" fill className="object-cover object-center scale-110" />
-              </span><br />
+              </span><br /> */}
               Community
             </h1>
-            
+
             <p className="text-sm md:text-base text-charcoal/70 max-w-lg leading-relaxed">
               Guwahati&apos;s street animals endure high-speed bypasses, monsoon floods, and GMC animal welfare gaps. We aren&apos;t just a charity; we are a community-led network delivering real rescue, foster circles, and local care.
             </p>
@@ -434,10 +430,10 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4">
               <button
-                onClick={() => scrollSmoothTo("adopt")}
-                className="px-8 py-4 bg-coral hover:bg-coral-light text-white font-bold uppercase tracking-wider text-xs rounded-full shadow-lg transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
+                onClick={() => scrollSmoothTo("donate")}
+                className="px-8 py-4 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-lg transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
               >
-                Book A Meet Now
+                Donate Now
               </button>
               <button
                 onClick={() => scrollSmoothTo("about")}
@@ -451,7 +447,7 @@ export default function Home() {
             </div>
 
             {/* 3.5K+ Community Stat */}
-            <div className="flex items-center gap-4 pt-4 border-t border-charcoal/5">
+            {/* <div className="flex items-center gap-4 pt-4 border-t border-charcoal/5">
               <div className="text-3xl font-black text-navy">3.5K+</div>
               <div className="flex -space-x-3">
                 <div className="h-9 w-9 rounded-full border-2 border-[#EBF0F6] bg-amber text-xs font-bold text-white flex items-center justify-center shadow-sm">PB</div>
@@ -465,32 +461,19 @@ export default function Home() {
                 </button>
               </div>
               <span className="text-xs font-bold text-charcoal/50 uppercase tracking-wider">People Join Us</span>
-            </div>
+            </div> */}
           </div>
 
-          {/* Right Column: Hero Cutout Image & Review Badge */}
+          {/* Right Column: Hero Cutout Image */}
           <div className="lg:col-span-6 relative flex justify-end h-full items-end mt-8 lg:mt-0">
             <div className="relative w-full max-w-lg aspect-square lg:aspect-auto lg:h-[520px] lg:w-[480px] select-none">
               <Image
-                src="/images/pet_hero.png"
+                src="/images/H2.jpg"
                 alt="Tabby cat and long-eared brown puppy side-by-side"
                 fill
                 priority
                 className="object-contain object-bottom z-10 filter drop-shadow-lg"
               />
-            </div>
-
-            {/* Floating review badge */}
-            <div className="absolute top-1/4 right-0 lg:-right-4 z-20 bg-navy border border-white/10 rounded-2xl p-4 shadow-xl text-center w-28 md:w-32 animate-fade-in-up">
-              <div className="text-2xl md:text-3xl font-black text-white leading-none mb-1">4.9</div>
-              <div className="flex justify-center gap-0.5 text-amber mb-2">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                  </svg>
-                ))}
-              </div>
-              <div className="text-[9px] font-bold text-white/50 uppercase tracking-widest">People Join Us</div>
             </div>
           </div>
         </div>
@@ -498,13 +481,13 @@ export default function Home() {
         {/* BOTTOM NAVY BENEFITS BAR */}
         <div className="bg-navy text-white py-10 z-20 border-t border-white/5 relative">
           <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left thumbnail card */}
             <div className="md:col-span-3 flex items-center justify-between bg-white/5 border border-white/10 rounded-2xl p-3 shadow-md relative group overflow-hidden">
               <div className="relative h-20 w-32 rounded-xl overflow-hidden bg-white/10">
                 <Image src="/images/cat_jonti.png" alt="preview cat" fill className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
               </div>
-              <button 
+              <button
                 onClick={() => scrollSmoothTo("adopt")}
                 className="absolute top-2 right-2 h-7 w-7 rounded-full bg-white text-navy flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-transform cursor-pointer"
               >
@@ -520,7 +503,7 @@ export default function Home() {
 
             {/* Three key benefits columns */}
             <div className="md:col-span-9 grid grid-cols-1 sm:grid-cols-3 gap-6 md:pl-6">
-              
+
               {/* Benefit 1 */}
               <div className="flex items-start gap-4 border-l border-white/10 sm:border-l-0 sm:pl-0 sm:border-r sm:border-dashed sm:border-white/20 pr-4">
                 <div className="bg-white/10 p-2.5 rounded-full text-coral shrink-0">
@@ -569,7 +552,7 @@ export default function Home() {
       <section className="py-24 bg-white border-b border-charcoal/5">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Big Vet Image with Stars Overlay */}
             <div className="lg:col-span-4 relative group">
               <div className="relative h-[480px] w-full rounded-3xl overflow-hidden border-2 border-charcoal/10 shadow-md">
@@ -601,7 +584,7 @@ export default function Home() {
               <p className="text-sm text-charcoal/70 leading-relaxed">
                 Poofyco is Guwahati&apos;s leading street animal rescue network, providing around-the-clock emergency field aid, foster circles, and local community sterilization camps to fill local municipal gaps.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-[#FAF7F2] border border-charcoal/5 rounded-2xl p-6">
                 {/* Paw Bullets */}
                 <div className="space-y-3 flex-1">
@@ -625,7 +608,7 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Learn More Button */}
                 <button
                   onClick={() => scrollSmoothTo("about")}
