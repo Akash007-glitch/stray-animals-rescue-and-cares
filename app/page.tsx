@@ -283,7 +283,7 @@ export default function Home() {
                   <Mail className="h-3.5 w-3.5 text-coral" /> rescue@sarc-assam.org
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-coral" /> Zoo Road, Guwahati, Assam
+                  <MapPin className="h-3.5 w-3.5 text-coral" /> Tinsukia, Assam
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -303,9 +303,8 @@ export default function Home() {
         {/* Main Floating Capsule Navbar */}
         <div className={`w-full transition-all duration-300 ${scrolled ? "py-2" : "py-4 md:py-6"}`}>
           <div className="max-w-6xl mx-auto px-6">
-            <div className={`transition-all duration-300 bg-white/95 backdrop-blur-md rounded-full border border-charcoal/5 flex items-center justify-between w-full max-w-6xl mx-auto ${
-              scrolled ? "py-2.5 px-6 shadow-md" : "py-4 px-8 shadow-lg"
-            }`}>
+            <div className={`transition-all duration-300 bg-white/95 backdrop-blur-md rounded-full border border-charcoal/5 flex items-center justify-between w-full max-w-6xl mx-auto ${scrolled ? "py-2.5 px-6 shadow-md" : "py-4 px-8 shadow-lg"
+              }`}>
               {/* Brand Logo */}
               <a onClick={() => scrollSmoothTo("home")} className="cursor-pointer flex items-center gap-2">
                 <span className="bg-coral/10 text-coral p-2 rounded-full inline-flex items-center justify-center">
@@ -319,7 +318,7 @@ export default function Home() {
                   </svg>
                 </span>
                 <div className="font-sans text-2xl font-black tracking-tight text-charcoal">
-                  Poofyco
+                  S.A.R.C
                 </div>
                 <span className="text-[9px] uppercase font-bold tracking-widest px-1.5 py-0.5 border border-charcoal/20 text-charcoal/60 rounded-xs">
                   Assam
@@ -424,7 +423,7 @@ export default function Home() {
             </h1>
 
             <p className="text-sm md:text-base text-charcoal/70 max-w-lg leading-relaxed">
-              Guwahati&apos;s street animals endure high-speed bypasses, monsoon floods, and GMC animal welfare gaps. We aren&apos;t just a charity; we are a community-led network delivering real rescue, foster circles, and local care.
+              Stray animals often live without reliable food, shelter, or medical care. Our mission is to promote awareness, encourage responsible coexistence, and inspire communities to take action for their well-being.
             </p>
 
             {/* CTA Buttons */}
