@@ -5,18 +5,20 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
 import Community from "@/components/Community";
-import About from "@/components/About";
 import Adopt from "@/components/Adopt";
 import AnimalModal from "@/components/AnimalModal";
 import Volunteer from "@/components/Volunteer";
 import Donate from "@/components/Donate";
 import Footer from "@/components/Footer";
 import ShelterTracker from "@/components/ShelterTracker";
+import { usePathname } from "next/navigation";
 
 import { animals } from "@/data/animals";
 import { Animal } from "@/types";
 
 export default function Home() {
+  const pathname = usePathname();
+
   // Navigation State
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -58,6 +60,16 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle deep-linking to sections from other pages when route changes
+  useEffect(() => {
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      setTimeout(() => {
+        scrollSmoothTo(hash);
+      }, 500);
+    }
+  }, [pathname]);
+
   const scrollSmoothTo = (id: string) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
@@ -98,11 +110,8 @@ export default function Home() {
       {/* Live Rescue Tracker & Shelter Donation */}
       <ShelterTracker />
 
-      {/* About & Mission (Timeline & context) */}
-      <About scrollSmoothTo={scrollSmoothTo} />
-
       {/* Adopt Section */}
-      <Adopt
+      {/* <Adopt
         animals={animals}
         speciesFilter={speciesFilter}
         setSpeciesFilter={setSpeciesFilter}
@@ -111,7 +120,7 @@ export default function Home() {
         locationFilter={locationFilter}
         setLocationFilter={setLocationFilter}
         setSelectedAnimal={setSelectedAnimal}
-      />
+      /> */}
 
       {/* Animal profile detail modal overlay */}
       {selectedAnimal && (

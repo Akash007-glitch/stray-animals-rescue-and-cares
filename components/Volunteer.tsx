@@ -26,33 +26,33 @@ export default function Volunteer() {
   };
 
   return (
-    <section id="volunteer" className="py-24 bg-[#FAF7F2] relative border-b border-terracotta/10">
+    <section id="volunteer" className="py-24 bg-[#FAF7F2] relative border-b border-charcoal/5">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest text-terracotta font-extrabold block mb-2">
+          <span className="text-xs uppercase tracking-widest text-coral font-extrabold block mb-2">
             Join the Movement
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-charcoal mb-4">Become a SARC Volunteer</h2>
-          <p className="text-charcoal/70">
+          <p className="text-charcoal/70 text-sm md:text-base leading-relaxed">
             We need people on the ground. Whether you want to assist in weekly sterilisation camp transport, coordinate
             rescue calls, or temporarily foster recovery cases in your backyard in Guwahati, we have a place for you.
           </p>
         </div>
 
-        <div className="bg-white border-2 border-charcoal/10 rounded-2xl p-8 md:p-12 shadow-sm">
+        <div className="bg-white border border-charcoal/10 rounded-2xl p-8 md:p-12 shadow-lg">
           {volunteerSubmitted ? (
-            <div className="text-center py-12 space-y-4 animate-fade-in-up">
-              <div className="bg-amber/15 h-16 w-16 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle2 className="h-10 w-10 text-terracotta" />
+            <div className="text-center py-12 space-y-5 animate-fade-in-up">
+              <div className="bg-coral/10 h-16 w-16 rounded-full flex items-center justify-center mx-auto">
+                <CheckCircle2 className="h-10 w-10 text-coral" />
               </div>
               <h3 className="text-2xl font-serif font-bold text-charcoal">Application Received!</h3>
-              <p className="text-charcoal/75 max-w-md mx-auto leading-relaxed">
+              <p className="text-charcoal/75 max-w-md mx-auto leading-relaxed text-sm">
                 Thank you for stepping forward. A coordinator from SARC&apos;s Guwahati chapter will reach out to you on
                 WhatsApp or via email within 48 hours to discuss our current active patrols.
               </p>
               <button
                 onClick={() => setVolunteerSubmitted(false)}
-                className="mt-6 text-xs uppercase tracking-wider font-bold text-terracotta hover:underline cursor-pointer"
+                className="mt-6 text-xs uppercase tracking-wider font-bold text-coral hover:text-coral-light transition-colors cursor-pointer"
               >
                 Submit Another Form
               </button>
@@ -63,12 +63,12 @@ export default function Volunteer() {
                 {/* Name */}
                 <div className="space-y-1.5">
                   <label className="text-xs uppercase font-extrabold text-charcoal tracking-wide flex items-center gap-1.5">
-                    <User className="h-3.5 w-3.5 text-terracotta" /> Full Name <span className="text-red-500">*</span>
+                    <User className="h-3.5 w-3.5 text-coral" /> Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Priyanuj Borah"
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta focus:border-terracotta bg-[#FAF7F2]/50 text-charcoal text-sm ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-coral focus:border-coral bg-[#FAF7F2]/50 text-charcoal text-sm transition-all ${
                       errors.name ? "border-red-500" : "border-charcoal/15"
                     }`}
                     {...register("name", { required: "Name is required" })}
@@ -79,12 +79,12 @@ export default function Volunteer() {
                 {/* Email */}
                 <div className="space-y-1.5">
                   <label className="text-xs uppercase font-extrabold text-charcoal tracking-wide flex items-center gap-1.5">
-                    <Mail className="h-3.5 w-3.5 text-terracotta" /> Email Address <span className="text-red-500">*</span>
+                    <Mail className="h-3.5 w-3.5 text-coral" /> Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
                     placeholder="e.g. priyanuj@gmail.com"
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta focus:border-terracotta bg-[#FAF7F2]/50 text-charcoal text-sm ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-coral focus:border-coral bg-[#FAF7F2]/50 text-charcoal text-sm transition-all ${
                       errors.email ? "border-red-500" : "border-charcoal/15"
                     }`}
                     {...register("email", {
@@ -101,13 +101,13 @@ export default function Volunteer() {
                 {/* Phone */}
                 <div className="space-y-1.5">
                   <label className="text-xs uppercase font-extrabold text-charcoal tracking-wide flex items-center gap-1.5">
-                    <Phone className="h-3.5 w-3.5 text-terracotta" /> WhatsApp Number{" "}
+                    <Phone className="h-3.5 w-3.5 text-coral" /> WhatsApp Number{" "}
                     <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. +91 98765 43210"
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta focus:border-terracotta bg-[#FAF7F2]/50 text-charcoal text-sm ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-coral focus:border-coral bg-[#FAF7F2]/50 text-charcoal text-sm transition-all ${
                       errors.phone ? "border-red-500" : "border-charcoal/15"
                     }`}
                     {...register("phone", {
@@ -129,7 +129,7 @@ export default function Volunteer() {
                   <input
                     type="number"
                     placeholder="e.g. 21"
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta focus:border-terracotta bg-[#FAF7F2]/50 text-charcoal text-sm ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-coral focus:border-coral bg-[#FAF7F2]/50 text-charcoal text-sm transition-all ${
                       errors.age ? "border-red-500" : "border-charcoal/15"
                     }`}
                     {...register("age", {
@@ -148,7 +148,7 @@ export default function Volunteer() {
                   Preferred Role / Focus Area <span className="text-red-500">*</span>
                 </label>
                 <select
-                  className="w-full px-4 py-3 border border-charcoal/15 rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta focus:border-terracotta bg-[#FAF7F2]/50 text-charcoal text-sm cursor-pointer"
+                  className="w-full px-4 py-3 border border-charcoal/15 rounded-lg focus:outline-none focus:ring-1 focus:ring-coral focus:border-coral bg-[#FAF7F2]/50 text-charcoal text-sm cursor-pointer transition-all"
                   {...register("role", { required: "Please select a role" })}
                 >
                   <option value="foster">Temporary Foster Care (Housing an animal during rehab)</option>
@@ -167,7 +167,7 @@ export default function Volunteer() {
                 <textarea
                   rows={4}
                   placeholder="Describe your motivation..."
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta focus:border-terracotta bg-[#FAF7F2]/50 text-charcoal text-sm ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-coral focus:border-coral bg-[#FAF7F2]/50 text-charcoal text-sm transition-all ${
                     errors.reason ? "border-red-500" : "border-charcoal/15"
                   }`}
                   {...register("reason", {
@@ -182,7 +182,7 @@ export default function Volunteer() {
                 <button
                   type="submit"
                   disabled={volunteerLoading}
-                  className="px-8 py-3.5 bg-terracotta hover:bg-terracotta-dark disabled:bg-terracotta/50 text-white font-bold uppercase tracking-wider text-xs rounded-lg shadow-md flex items-center justify-center gap-2 ml-auto cursor-pointer"
+                  className="px-8 py-3.5 bg-navy hover:bg-navy-dark disabled:bg-navy/50 text-white font-bold uppercase tracking-wider text-xs rounded-lg shadow-md flex items-center justify-center gap-2 ml-auto cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
                 >
                   {volunteerLoading ? (
                     <>

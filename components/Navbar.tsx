@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 interface NavbarProps {
   scrolled: boolean;
@@ -18,6 +19,32 @@ export default function Navbar({
   setMobileMenuOpen,
   scrollSmoothTo
 }: NavbarProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleNavClick = (target: string) => {
+    setMobileMenuOpen(false);
+    
+    // Ensure we resolve the path correctly even during hydration or client router lags
+    const currentPath = pathname || (typeof window !== "undefined" ? window.location.pathname : "/");
+
+    if (target === "about") {
+      router.push("/about");
+    } else {
+      if (currentPath === "/") {
+        scrollSmoothTo(target);
+      } else {
+        router.push(`/#${target}`);
+      }
+    }
+  };
+
+  const isActive = (target: string) => {
+    if (target === "about") {
+      return pathname === "/about";
+    }
+    return pathname === "/" && activeSection === target;
+  };
   return (
     <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full">
       {/* Topbar: Contact & Social Info */}
@@ -61,7 +88,7 @@ export default function Navbar({
               }`}
           >
             {/* Brand Logo */}
-            <a onClick={() => scrollSmoothTo("home")} className="cursor-pointer flex items-center gap-2">
+            <a onClick={() => handleNavClick("home")} className="cursor-pointer flex items-center gap-2">
               <span className="bg-coral/10 text-coral p-2 rounded-full inline-flex items-center justify-center">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <circle cx="8" cy="6" r="2" />
@@ -90,8 +117,8 @@ export default function Navbar({
               ].map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => scrollSmoothTo(item.target)}
-                  className={`text-sm tracking-wide transition-colors hover:text-coral cursor-pointer ${activeSection === item.target
+                  onClick={() => handleNavClick(item.target)}
+                  className={`text-sm tracking-wide transition-colors hover:text-coral cursor-pointer ${isActive(item.target)
                     ? "text-coral font-bold border-b-2 border-coral pb-0.5"
                     : "text-charcoal/80"
                     }`}
@@ -104,7 +131,7 @@ export default function Navbar({
             {/* Contact Us Nav Button */}
             <div className="hidden md:block">
               <button
-                onClick={() => scrollSmoothTo("volunteer")}
+                onClick={() => handleNavClick("volunteer")}
                 className="text-xs uppercase tracking-widest font-black px-6 py-3 rounded-full border-2 border-navy text-navy hover:bg-[#0B0E37] hover:text-white transition-all cursor-pointer"
               >
                 Contact Us
@@ -136,15 +163,15 @@ export default function Navbar({
           ].map((item) => (
             <button
               key={item.label}
-              onClick={() => scrollSmoothTo(item.target)}
-              className={`text-left text-lg font-serif font-bold py-2 border-b border-terracotta/10 cursor-pointer ${activeSection === item.target ? "text-coral" : "text-charcoal"
+              onClick={() => handleNavClick(item.target)}
+              className={`text-left text-lg font-serif font-bold py-2 border-b border-terracotta/10 cursor-pointer ${isActive(item.target) ? "text-coral" : "text-charcoal"
                 }`}
             >
               {item.label}
             </button>
           ))}
           <button
-            onClick={() => scrollSmoothTo("volunteer")}
+            onClick={() => handleNavClick("volunteer")}
             className="mt-2 w-full py-3 text-center uppercase tracking-widest text-sm font-bold bg-coral text-white rounded-lg hover:bg-coral-light cursor-pointer"
           >
             Contact Us

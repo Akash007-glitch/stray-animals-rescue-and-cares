@@ -44,46 +44,52 @@ export default function Donate() {
   return (
     <>
       {/* DONATE (Razorpay UI mock) */}
-      <section id="donate" className="py-24 bg-white border-b border-terracotta/10">
+      <section id="donate" className="py-24 bg-white border-b border-charcoal/5">
         <div className="max-w-4xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left side: Context */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase tracking-widest text-terracotta font-extrabold block mb-2">
+              <span className="text-xs uppercase tracking-widest text-coral font-extrabold block mb-2">
                 Support Our Missions
               </span>
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-charcoal leading-tight">
                 Fuel a Rescue Operation
               </h2>
-              <p className="text-charcoal/75 text-base md:text-lg leading-relaxed">
+              <p className="text-charcoal/75 text-base leading-relaxed">
                 We operate with complete financial transparency. SARC does not receive government funding. Every vial
                 of vaccine, surgical suture, and bowl of meal is funded directly by citizens like you.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="bg-amber/15 p-2 rounded-lg text-terracotta font-bold text-sm shrink-0">₹500</div>
+                  <div className="bg-coral/10 p-2.5 rounded-lg text-coral font-extrabold text-sm shrink-0 flex items-center justify-center min-w-[70px]">
+                    ₹500
+                  </div>
                   <div>
                     <h4 className="font-bold text-sm text-charcoal">Feeds a Recuperating Stray</h4>
-                    <p className="text-xs text-charcoal/60">
+                    <p className="text-xs text-charcoal/60 leading-relaxed">
                       Provides nutritious food, calcium supplements, and fresh water to one foster dog for two weeks.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="bg-amber/15 p-2 rounded-lg text-terracotta font-bold text-sm shrink-0">₹1,000</div>
+                  <div className="bg-coral/10 p-2.5 rounded-lg text-coral font-extrabold text-sm shrink-0 flex items-center justify-center min-w-[70px]">
+                    ₹1,000
+                  </div>
                   <div>
                     <h4 className="font-bold text-sm text-charcoal">Core Vaccinations Package</h4>
-                    <p className="text-xs text-charcoal/60">
+                    <p className="text-xs text-charcoal/60 leading-relaxed">
                       Covers DHPPi + Rabies vaccinations and deworming treatments for one stray puppy.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="bg-amber/15 p-2 rounded-lg text-terracotta font-bold text-sm shrink-0">₹2,500</div>
+                  <div className="bg-coral/10 p-2.5 rounded-lg text-coral font-extrabold text-sm shrink-0 flex items-center justify-center min-w-[70px]">
+                    ₹2,500
+                  </div>
                   <div>
                     <h4 className="font-bold text-sm text-charcoal">Sterilisation & Post-Op Boarding</h4>
-                    <p className="text-xs text-charcoal/60">
+                    <p className="text-xs text-charcoal/60 leading-relaxed">
                       Funds one complete Animal Birth Control (ABC) keyhole surgery, antibiotics, and 5 days of shelter
                       recovery.
                     </p>
@@ -94,25 +100,25 @@ export default function Donate() {
 
             {/* Right side: Donate Box */}
             <div className="lg:col-span-6">
-              <div className="bg-[#FAF7F2] border-2 border-charcoal/10 rounded-2xl p-8 shadow-md space-y-6">
+              <div className="bg-[#FAF7F2]/45 border border-charcoal/10 rounded-2xl p-8 shadow-lg space-y-6">
                 <h3 className="text-xl font-serif font-bold text-charcoal text-center">Select Contribution Amount</h3>
 
                 <div className="grid grid-cols-3 gap-3">
                   <button
                     onClick={() => handleOpenDonateModal("500")}
-                    className="py-4 border-2 border-charcoal/15 bg-white text-charcoal font-bold rounded-lg hover:border-terracotta hover:bg-terracotta/5 transition-all text-sm cursor-pointer"
+                    className="py-4 border border-charcoal/15 bg-white text-charcoal font-bold rounded-lg hover:border-coral hover:bg-coral/5 transition-all text-sm cursor-pointer hover:shadow-sm"
                   >
                     ₹500
                   </button>
                   <button
                     onClick={() => handleOpenDonateModal("1000")}
-                    className="py-4 border-2 border-charcoal/15 bg-white text-charcoal font-bold rounded-lg hover:border-terracotta hover:bg-terracotta/5 transition-all text-sm cursor-pointer"
+                    className="py-4 border border-charcoal/15 bg-white text-charcoal font-bold rounded-lg hover:border-coral hover:bg-coral/5 transition-all text-sm cursor-pointer hover:shadow-sm"
                   >
                     ₹1,000
                   </button>
                   <button
                     onClick={() => handleOpenDonateModal("2500")}
-                    className="py-4 border-2 border-charcoal/15 bg-white text-charcoal font-bold rounded-lg hover:border-terracotta hover:bg-terracotta/5 transition-all text-sm cursor-pointer"
+                    className="py-4 border border-charcoal/15 bg-white text-charcoal font-bold rounded-lg hover:border-coral hover:bg-coral/5 transition-all text-sm cursor-pointer hover:shadow-sm"
                   >
                     ₹2,500
                   </button>
@@ -129,7 +135,7 @@ export default function Donate() {
 
                 <button
                   onClick={() => handleOpenDonateModal("custom")}
-                  className="w-full py-3 bg-terracotta hover:bg-terracotta-dark text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-colors cursor-pointer text-center block"
+                  className="w-full py-3.5 bg-navy hover:bg-navy-dark text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg cursor-pointer text-center block"
                 >
                   Contribute A Custom Amount
                 </button>
@@ -146,18 +152,18 @@ export default function Donate() {
       {/* RAZORPAY MODAL MOCK */}
       {donateModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/70 backdrop-blur-xs animate-fade-in-up">
-          <div className="bg-white border border-slate-200 rounded-xl max-w-md w-full overflow-hidden shadow-2xl relative">
-            {/* Header: Razorpay Theme (Blue/Indigo styling) */}
-            <div className="bg-[#172554] text-white px-6 py-5 flex items-center justify-between">
+          <div className="bg-white border border-charcoal/10 rounded-xl max-w-md w-full overflow-hidden shadow-2xl relative">
+            {/* Header: Razorpay Theme (SARC Cohesive Navy & Coral styling) */}
+            <div className="bg-navy text-white px-6 py-5 flex items-center justify-between">
               <div className="space-y-1">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-[#93c5fd]">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-coral">
                   Razorpay Secure Checkout
                 </span>
-                <h3 className="text-lg font-bold">Street Animal Rescue Collective</h3>
+                <h3 className="text-base font-bold tracking-tight">Street Animal Rescue Collective</h3>
               </div>
               <button
                 onClick={() => setDonateModalOpen(false)}
-                className="text-white/70 hover:text-white p-1 hover:bg-white/10 rounded-full cursor-pointer"
+                className="text-white/70 hover:text-white p-1 hover:bg-white/10 rounded-full cursor-pointer transition-colors"
                 aria-label="Close Payment"
               >
                 <X className="h-5 w-5" />
@@ -168,23 +174,23 @@ export default function Donate() {
             {paymentStep === "details" && (
               <form onSubmit={handleSubmit(onSubmitDonate)} className="p-6 space-y-5">
                 {/* Selected Amount / Custom Amount Input */}
-                <div className="bg-[#eff6ff] border border-[#bfdbfe] rounded-lg p-4 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#1e3a8a] uppercase">Donation Amount</span>
+                <div className="bg-coral/10 border border-coral/20 rounded-lg p-4 flex items-center justify-between">
+                  <span className="text-xs font-bold text-coral uppercase tracking-wide">Donation Amount</span>
 
                   {selectedAmount === "custom" ? (
                     <div className="flex items-center gap-1.5">
-                      <span className="text-lg font-bold text-[#172554]">₹</span>
+                      <span className="text-lg font-bold text-navy">₹</span>
                       <input
                         type="number"
                         placeholder="Amount"
                         required
-                        className="w-24 px-2 py-1 text-sm font-bold border border-blue-300 rounded-md focus:outline-none focus:border-blue-600 text-[#172554]"
+                        className="w-24 px-2 py-1 text-sm font-bold border border-coral/30 rounded-md focus:outline-none focus:border-coral text-navy bg-white"
                         value={customAmountVal}
                         onChange={(e) => setCustomAmountVal(e.target.value)}
                       />
                     </div>
                   ) : (
-                    <span className="text-xl font-extrabold text-[#172554]">
+                    <span className="text-xl font-extrabold text-navy">
                       ₹{Number(selectedAmount).toLocaleString()}
                     </span>
                   )}
@@ -193,14 +199,14 @@ export default function Donate() {
                 <div className="space-y-4">
                   {/* Name */}
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider block">
+                    <label className="text-[10px] uppercase font-extrabold text-charcoal/70 tracking-wider block">
                       Full Name
                     </label>
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-[#172554] text-charcoal ${
-                        errors.name ? "border-red-500" : "border-slate-200"
+                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${
+                        errors.name ? "border-red-500" : "border-charcoal/15"
                       }`}
                       {...register("name", { required: "Name is required" })}
                     />
@@ -208,14 +214,14 @@ export default function Donate() {
 
                   {/* Email */}
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider block">
+                    <label className="text-[10px] uppercase font-extrabold text-charcoal/70 tracking-wider block">
                       Email Address
                     </label>
                     <input
                       type="email"
                       placeholder="your.email@domain.com"
-                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-[#172554] text-charcoal ${
-                        errors.email ? "border-red-500" : "border-slate-200"
+                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${
+                        errors.email ? "border-red-500" : "border-charcoal/15"
                       }`}
                       {...register("email", {
                         required: "Email is required",
@@ -229,14 +235,14 @@ export default function Donate() {
 
                   {/* Phone */}
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider block">
+                    <label className="text-[10px] uppercase font-extrabold text-charcoal/70 tracking-wider block">
                       Phone Number
                     </label>
                     <input
                       type="text"
                       placeholder="10-digit number"
-                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-[#172554] text-charcoal ${
-                        errors.phone ? "border-red-500" : "border-slate-200"
+                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${
+                        errors.phone ? "border-red-500" : "border-charcoal/15"
                       }`}
                       {...register("phone", {
                         required: "Phone is required",
@@ -249,13 +255,13 @@ export default function Donate() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full py-3 bg-[#1e40af] hover:bg-[#1e3a8a] text-white font-bold text-xs uppercase tracking-widest rounded-md flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                    className="w-full py-3.5 bg-coral hover:bg-coral-light text-white font-bold text-xs uppercase tracking-widest rounded-md flex items-center justify-center gap-1.5 cursor-pointer shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     Pay Securely with Razorpay
                   </button>
                 </div>
 
-                <div className="text-center text-[9px] text-slate-400">
+                <div className="text-center text-[9px] text-charcoal/40 font-semibold">
                   By clicking, you agree to our terms. SARC is a registered non-profit network.
                 </div>
               </form>
@@ -263,10 +269,10 @@ export default function Donate() {
 
             {paymentStep === "processing" && (
               <div className="p-12 text-center space-y-6 flex flex-col items-center justify-center animate-fade-in-up">
-                <Loader2 className="h-12 w-12 animate-spin text-[#1e40af]" />
+                <Loader2 className="h-12 w-12 animate-spin text-coral" />
                 <div className="space-y-1.5">
-                  <h4 className="font-bold text-slate-700 text-lg">Authorizing Payment...</h4>
-                  <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
+                  <h4 className="font-bold text-charcoal text-lg">Authorizing Payment...</h4>
+                  <p className="text-xs text-charcoal/55 max-w-xs leading-relaxed">
                     Please do not close this window or refresh. Connecting to your bank secure gate.
                   </p>
                 </div>
@@ -280,24 +286,24 @@ export default function Donate() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <h4 className="font-bold text-slate-800 text-xl">Payment Successful!</h4>
-                  <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
+                  <h4 className="font-bold text-charcoal text-xl">Payment Successful!</h4>
+                  <p className="text-xs text-charcoal/60 max-w-xs leading-relaxed">
                     Thank you. Your contribution has been credited to our rescue fund. A tax-exempt receipt has been
                     sent to your email.
                   </p>
                 </div>
 
-                <div className="bg-slate-50 border border-slate-200 rounded-md p-3.5 w-full text-left space-y-1.5 text-xs text-slate-600">
+                <div className="bg-[#FAF7F2] border border-charcoal/10 rounded-md p-4 w-full text-left space-y-2 text-xs text-charcoal/80">
                   <div>
                     <strong>Transaction ID:</strong>{" "}
-                    <code className="text-[#1e40af] font-mono text-[11px]">{transactionId}</code>
+                    <code className="text-coral font-mono text-[11px] font-bold">{transactionId}</code>
                   </div>
                   <div>
                     <strong>Recipient:</strong> <span>Street Animal Rescue Collective (Assam)</span>
                   </div>
                   <div>
                     <strong>Amount:</strong>{" "}
-                    <span>
+                    <span className="font-bold text-navy">
                       ₹
                       {selectedAmount === "custom"
                         ? Number(customAmountVal).toLocaleString()
@@ -309,7 +315,7 @@ export default function Donate() {
                 <button
                   type="button"
                   onClick={() => setDonateModalOpen(false)}
-                  className="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-widest rounded-md cursor-pointer"
+                  className="w-full py-3 bg-navy hover:bg-navy-dark text-white font-bold text-xs uppercase tracking-widest rounded-md cursor-pointer transition-colors shadow-sm"
                 >
                   Close Receipt
                 </button>
