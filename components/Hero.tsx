@@ -11,11 +11,30 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative bg-[#EBF0F6] lg:h-[100vh] lg:min-h-[880px] pt-36 md:pt-40 lg:pt-48 pb-12 lg:pb-0 flex flex-col justify-between overflow-hidden"
+      className="relative bg-[#EBF0F6] lg:h-[100vh] lg:min-h-[880px] pt-36 md:pt-40 lg:pt-48 pb-0 lg:pb-0 flex flex-col justify-between overflow-hidden"
     >
+      {/* Background Image of Dogs (Mobile/Tablet Only) */}
+      <div className="absolute inset-0 z-0 select-none lg:hidden">
+        <Image
+          src="/images/H2.jpg"
+          alt="Rescue dogs background"
+          fill
+          priority
+          className="object-cover object-center opacity-65"
+        />
+        {/* Soft color overlay to keep contrast high */}
+        <div className="absolute inset-0 bg-[#EBF0F6]/40" />
+      </div>
+
       {/* Topographic organic background styling */}
       <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-        <svg className="w-full h-full" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="w-full h-full"
+          viewBox="0 0 1440 900"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+        >
           <path d="M-100 100 C 300 150, 400 -50, 900 100 C 1400 250, 1200 400, 1600 500" stroke="#0B0E37" strokeWidth="2" />
           <path d="M-100 200 C 300 250, 400 50, 900 200 C 1400 350, 1200 500, 1600 600" stroke="#0B0E37" strokeWidth="2" />
           <path d="M-100 300 C 300 350, 400 150, 900 300 C 1400 450, 1200 600, 1600 700" stroke="#0B0E37" strokeWidth="2" />
@@ -23,7 +42,7 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full z-10 relative flex-1 py-8 lg:py-0">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full z-10 relative flex-1 py-8 lg:py-0 pb-16 lg:pb-0">
         {/* Left Column: Heading & CTAs */}
         <div className="lg:col-span-6 space-y-6 md:space-y-8 text-left animate-fade-in-up">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-black text-navy leading-[1.15] tracking-tight">
@@ -57,8 +76,8 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
           </div>
         </div>
 
-        {/* Right Column: Hero Cutout Image */}
-        <div className="lg:col-span-6 relative flex justify-center lg:justify-end items-end mt-8 lg:mt-0 h-[280px] sm:h-[380px] lg:h-[520px]">
+        {/* Right Column: Hero Cutout Image (Desktop only) */}
+        <div className="hidden lg:flex lg:col-span-6 relative justify-center lg:justify-end items-end mt-8 lg:mt-0 h-[280px] sm:h-[380px] lg:h-[520px] w-full">
           <div className="relative w-full h-full max-w-md lg:max-w-none select-none">
             <Image
               src="/images/H2.jpg"
