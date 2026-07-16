@@ -26,16 +26,16 @@ export default function Volunteer() {
   };
 
   return (
-    <section id="volunteer" className="py-24 bg-[#FAF7F2] relative border-b border-charcoal/5">
+    <section id="volunteer" className="py-16 md:py-24 bg-[#FAF7F2] relative border-b border-charcoal/5">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs uppercase tracking-widest text-coral font-extrabold block mb-2">
             Join the Movement
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-charcoal mb-4">Become a SARC Volunteer</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-charcoal mb-4">Become a SARC Volunteer</h2>
           <p className="text-charcoal/70 text-sm md:text-base leading-relaxed">
             We need people on the ground. Whether you want to assist in weekly sterilisation camp transport, coordinate
-            rescue calls, or temporarily foster recovery cases in your backyard in Guwahati, we have a place for you.
+            rescue calls, or temporarily foster recovery cases in your backyard in Tinsukia, we have a place for you.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function Volunteer() {
               </div>
               <h3 className="text-2xl font-serif font-bold text-charcoal">Application Received!</h3>
               <p className="text-charcoal/75 max-w-md mx-auto leading-relaxed text-sm">
-                Thank you for stepping forward. A coordinator from SARC&apos;s Guwahati chapter will reach out to you on
+                Thank you for stepping forward. A coordinator from SARC&apos;s Tinsukia chapter will reach out to you on
                 WhatsApp or via email within 48 hours to discuss our current active patrols.
               </p>
               <button
@@ -182,7 +182,7 @@ export default function Volunteer() {
                 <button
                   type="submit"
                   disabled={volunteerLoading}
-                  className="px-8 py-3.5 bg-navy hover:bg-navy-dark disabled:bg-navy/50 text-white font-bold uppercase tracking-wider text-xs rounded-lg shadow-md flex items-center justify-center gap-2 ml-auto cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
+                  className="px-8 py-3.5 bg-coral hover:bg-coral-light disabled:bg-coral/50 text-white font-bold uppercase tracking-wider text-xs rounded-lg shadow-md flex items-center justify-center gap-2 ml-auto cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 shadow-coral/20 hover:shadow-coral/40"
                 >
                   {volunteerLoading ? (
                     <>

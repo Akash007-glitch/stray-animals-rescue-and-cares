@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
+import PawCursorTrail from "@/components/PawCursorTrail";
 
 export default function AboutPage() {
   const router = useRouter();
@@ -49,6 +50,9 @@ export default function AboutPage() {
 
       {/* Modern Footer */}
       <Footer scrollSmoothTo={scrollSmoothTo} />
+
+      {/* Interactive Paw Cursor Trail */}
+      <PawCursorTrail />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { PawPrint } from "lucide-react";
 
 interface HeroProps {
   scrollSmoothTo: (id: string) => void;
@@ -11,23 +12,12 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative bg-[#EBF0F6] lg:h-[100vh] lg:min-h-[880px] pt-36 md:pt-40 lg:pt-48 pb-0 lg:pb-0 flex flex-col justify-between overflow-hidden"
+      className="relative bg-gradient-to-b from-[#EBF0F6] via-[#FAF7F2] to-[#EBF0F6]/40 lg:h-[100vh] lg:min-h-[820px] pt-24 xs:pt-28 md:pt-36 lg:pt-44 pb-12 lg:pb-0 flex flex-col justify-between overflow-hidden"
     >
-      {/* Background Image of Dogs (Mobile/Tablet Only) */}
-      <div className="absolute inset-0 z-0 select-none lg:hidden">
-        <Image
-          src="/images/H2.jpg"
-          alt="Rescue dogs background"
-          fill
-          priority
-          className="object-cover object-center opacity-65"
-        />
-        {/* Soft color overlay to keep contrast high */}
-        <div className="absolute inset-0 bg-[#EBF0F6]/40" />
-      </div>
+      {/* Mobile/Tablet: Clean background to keep text readable. Topographic line SVG overlay will display. */}
 
       {/* Topographic organic background styling */}
-      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none">
         <svg
           className="w-full h-full"
           viewBox="0 0 1440 900"
@@ -42,29 +32,30 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full z-10 relative flex-1 py-8 lg:py-0 pb-16 lg:pb-0">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full z-10 relative flex-1 py-6 md:py-8 lg:py-0 pb-12 lg:pb-0">
         {/* Left Column: Heading & CTAs */}
-        <div className="lg:col-span-6 space-y-6 md:space-y-8 text-left animate-fade-in-up">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-black text-navy leading-[1.15] tracking-tight">
+        <div className="lg:col-span-6 space-y-6 md:space-y-8 text-center lg:text-left items-center lg:items-start flex flex-col animate-fade-in-up w-full order-2 lg:order-1">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-black text-navy leading-[1.15] tracking-tight w-full">
             Helping Stray Animals,
             <br />
             Building Community
           </h1>
 
-          <p className="text-xs sm:text-sm md:text-base text-charcoal/70 max-w-lg leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-charcoal/70 max-w-lg leading-relaxed text-center lg:text-left mx-auto lg:mx-0">
             Stray animals often live without reliable food, shelter, or medical care. Our mission is to promote
             awareness, encourage responsible coexistence, and inspire communities to take action for their well-being.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 w-full">
             <button
               onClick={() => scrollSmoothTo("donate")}
-              className="px-6 py-3 sm:px-8 sm:py-4 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-lg transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-md shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0 flex items-center gap-2"
             >
-              Donate Now
+              <PawPrint className="w-4.5 h-4.5 fill-current" />
+              <span>Donate Now</span>
             </button>
-            <button
+            {/* <button
               onClick={() => scrollSmoothTo("about")}
               className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-navy hover:bg-navy-dark text-white flex items-center justify-center shadow-md transition-all cursor-pointer hover:scale-105 active:scale-100"
               aria-label="About our mission"
@@ -72,115 +63,69 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
               <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
 
-        {/* Right Column: Hero Cutout Image (Desktop only) */}
-        <div className="hidden lg:flex lg:col-span-6 relative justify-center lg:justify-end items-end mt-8 lg:mt-0 h-[280px] sm:h-[380px] lg:h-[520px] w-full">
-          <div className="relative w-full h-full max-w-md lg:max-w-none select-none">
-            <Image
-              src="/images/H2.jpg"
-              alt="Tabby cat and long-eared brown puppy side-by-side"
-              fill
-              priority
-              className="object-contain object-bottom z-10 filter drop-shadow-lg"
-            />
+        {/* Right Column: Hero Dual-Frame Image Section */}
+        <div className="flex lg:col-span-6 relative justify-center lg:justify-end items-center mt-8 lg:mt-0 w-full min-h-[320px] xs:min-h-[360px] sm:min-h-[460px] lg:min-h-[540px] order-1 lg:order-2">
+          {/* Main Container for the overlapping frames */}
+          <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[420px] lg:max-w-[480px] h-[300px] xs:h-[340px] sm:h-[420px] lg:h-[480px] select-none flex items-center justify-center">
+
+            {/* BACKGROUND DECORATIVE SHAPES */}
+            {/* Top-Right: Solid coral dots & flat floating paw print */}
+            <div className="absolute top-0 right-2 xs:right-4 lg:right-10 flex gap-2 items-center animate-float-slow z-0">
+              <PawPrint className="w-8 h-8 xs:w-10 xs:h-10 text-coral fill-coral/10 opacity-70 rotate-[15deg] drop-shadow-sm" />
+              <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-coral/40 mt-4" />
+              <div className="w-3 h-3 xs:w-3.5 xs:h-3.5 rounded-full bg-coral/25 mt-1" />
+            </div>
+
+            {/* Pink floating leaf-like sparks/paws on the left */}
+            <div className="absolute left-[-15px] xs:left-[-25px] top-[18%] xs:top-[22%] flex flex-col items-center gap-3 animate-float-delayed z-20">
+              <PawPrint className="w-8 h-8 xs:w-10 xs:h-10 text-coral fill-coral/10 opacity-75 rotate-[-20deg] drop-shadow-sm" />
+              
+              {/* Simple clean double-leaf sprout outline SVG in coral */}
+              <svg className="w-7 h-7 xs:w-9 xs:h-9 text-coral/60 ml-2 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 22C2 22 8 20 12 16C16 12 18 6 18 6" />
+                <path d="M12 16C12 16 10 11 6 10C2 9 2 6 2 6C2 6 7 6 10 8C13 10 12 16 12 16Z" />
+                <path d="M18 6C18 6 17 11 19 14C21 17 22 20 22 20C22 20 19 18 16 17C13 16 18 6 18 6Z" />
+              </svg>
+            </div>
+
+            {/* Main Oval Frame (Egg Shape) - Clean clipped edge with soft shadow */}
+            <div className="absolute w-[180px] h-[250px] xs:w-[210px] xs:h-[290px] sm:w-[270px] sm:h-[370px] lg:w-[320px] lg:h-[440px] overflow-hidden rounded-[160px_160px_100px_100px] shadow-[0_20px_50px_rgba(11,14,55,0.12)] z-10 transition-transform hover:scale-[1.02] duration-300">
+              <Image
+                src="/images/pet_hero.png"
+                alt="Rescue Dog"
+                fill
+                priority
+                sizes="(max-width: 480px) 180px, (max-width: 768px) 270px, 320px"
+                className="object-cover object-center"
+              />
+            </div>
+
+            {/* Smaller Overlapping Circular Frame */}
+            <div className="absolute bottom-[5%] left-[2%] xs:left-[5%] lg:left-0 w-[100px] h-[100px] xs:w-[120px] xs:h-[120px] sm:w-[160px] sm:h-[160px] lg:w-[190px] lg:h-[190px] overflow-hidden rounded-full border-4 xs:border-[6px] border-white shadow-[0_25px_60px_rgba(11,14,55,0.18)] z-20 transition-transform hover:scale-[1.05] duration-300">
+              <Image
+                src="/images/volunteers_petting_beagle.png"
+                alt="Volunteers petting a dog"
+                fill
+                sizes="(max-width: 480px) 100px, (max-width: 768px) 160px, 190px"
+                className="object-cover object-center"
+              />
+            </div>
+
+            {/* Extra floating paw at the bottom right */}
+            <div className="absolute bottom-6 xs:bottom-8 right-4 xs:right-6 w-8 h-8 xs:w-9 xs:h-9 rounded-full bg-white/95 backdrop-blur-sm shadow-md flex items-center justify-center text-coral animate-float-fast z-20 border border-white/20">
+              <PawPrint className="w-4 h-4 xs:w-4.5 xs:h-4.5 rotate-[15deg] fill-current" />
+            </div>
+
           </div>
         </div>
       </div>
 
       {/* BOTTOM NAVY BENEFITS BAR */}
-      <div className="bg-navy text-white py-8 md:py-10 z-20 border-t border-white/5 relative">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left thumbnail card */}
-          <div className="lg:col-span-3 flex items-center justify-between bg-white/5 border border-white/10 rounded-2xl p-3 shadow-md relative group overflow-hidden w-full max-w-md mx-auto lg:max-w-none">
-            <div className="relative h-20 w-32 rounded-xl overflow-hidden bg-white/10">
-              <Image
-                src="/images/cat_jonti.png"
-                alt="preview cat"
-                fill
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <button
-              onClick={() => scrollSmoothTo("adopt")}
-              className="absolute top-2 right-2 h-7 w-7 rounded-full bg-white text-navy flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-            >
-              <svg className="w-3.5 h-3.5 text-coral stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-            <div className="flex-1 pl-3 text-left">
-              <div className="text-xs font-bold text-white/90">Adopt Today</div>
-              <div className="text-[10px] text-white/50 mt-0.5">Meet Jonti & friends</div>
-            </div>
-          </div>
 
-          {/* Three key benefits columns */}
-          <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:pl-6">
-            {/* Benefit 1 */}
-            <div className="flex items-start gap-4 border-l border-white/10 sm:border-l-0 sm:pl-0 sm:border-r sm:border-dashed sm:border-white/20 pr-4">
-              <div className="bg-white/10 p-2.5 rounded-full text-coral shrink-0">
-                <svg className="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-xs uppercase font-extrabold text-coral tracking-wider mb-1">Rescue Animal</h4>
-                <p className="text-[10.5px] text-white/60 leading-relaxed">
-                  Weekly street rescue and flyover patrols in Guwahati city zones.
-                </p>
-              </div>
-            </div>
-
-            {/* Benefit 2 */}
-            <div className="flex items-start gap-4 sm:pl-4 sm:border-r sm:border-dashed sm:border-white/20 pr-4">
-              <div className="bg-white/10 p-2.5 rounded-full text-coral shrink-0">
-                <svg className="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 11c0-1.1.9-2 2-2h1a3 3 0 013 3v2a3 3 0 01-3 3h-1m-4-6a3 3 0 00-3-3H4a3 3 0 00-3 3v2a3 3 0 003 3h1m4 3v1a3 3 0 01-3 3H4M9 15h6"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-xs uppercase font-extrabold text-coral tracking-wider mb-1">Rehabilitation</h4>
-                <p className="text-[10.5px] text-white/60 leading-relaxed">
-                  Medical clinics, boarding, vaccines, and keyhole sterilization drives.
-                </p>
-              </div>
-            </div>
-
-            {/* Benefit 3 */}
-            <div className="flex items-start gap-4 sm:pl-4">
-              <div className="bg-white/10 p-2.5 rounded-full text-coral shrink-0">
-                <svg className="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-xs uppercase font-extrabold text-coral tracking-wider mb-1">Pet Adoption</h4>
-                <p className="text-[10.5px] text-white/60 leading-relaxed">
-                  Matching our recovered rescues with loving and warm families.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

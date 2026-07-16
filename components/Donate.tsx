@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Lock, X, Loader2, CheckCircle2 } from "lucide-react";
 import { DonateFormData } from "@/types";
@@ -12,6 +12,7 @@ export default function Donate() {
   const [customAmountVal, setCustomAmountVal] = useState<string>("");
   const [paymentStep, setPaymentStep] = useState<"details" | "processing" | "success">("details");
   const [transactionId, setTransactionId] = useState("");
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const {
     register,
@@ -20,14 +21,30 @@ export default function Donate() {
     reset
   } = useForm<DonateFormData>();
 
+  // Cleanup timeout when modal closes or component unmounts
+  useEffect(() => {
+    if (!donateModalOpen && timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+      setPaymentStep("details"); // Reset state
+    }
+  }, [donateModalOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   const onSubmitDonate = (data: DonateFormData) => {
     setPaymentStep("processing");
     const finalAmount = selectedAmount === "custom" ? customAmountVal : selectedAmount;
     console.log("Donation details submitted:", data, "Amount:", finalAmount);
-    setTimeout(() => {
-      setTransactionId(`pay_SARC${Math.random().toString(36).substr(2, 9).toUpperCase()}`);
+    timeoutRef.current = setTimeout(() => {
+      setTransactionId(`pay_SARC${Math.random().toString(36).slice(2, 11).toUpperCase()}`);
       setPaymentStep("success");
       reset();
+      timeoutRef.current = null;
     }, 2000);
   };
 
@@ -44,7 +61,7 @@ export default function Donate() {
   return (
     <>
       {/* DONATE (Razorpay UI mock) */}
-      <section id="donate" className="py-24 bg-white border-b border-charcoal/5">
+      <section id="donate" className="py-16 md:py-24 bg-white border-b border-charcoal/5">
         <div className="max-w-4xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left side: Context */}
@@ -52,7 +69,7 @@ export default function Donate() {
               <span className="text-xs uppercase tracking-widest text-coral font-extrabold block mb-2">
                 Support Our Missions
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-charcoal leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-charcoal leading-tight">
                 Fuel a Rescue Operation
               </h2>
               <p className="text-charcoal/75 text-base leading-relaxed">
@@ -135,7 +152,7 @@ export default function Donate() {
 
                 <button
                   onClick={() => handleOpenDonateModal("custom")}
-                  className="w-full py-3.5 bg-navy hover:bg-navy-dark text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg cursor-pointer text-center block"
+                  className="w-full py-3.5 bg-coral hover:bg-coral-light text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-md shadow-coral/20 hover:shadow-lg hover:shadow-coral/40 cursor-pointer text-center block"
                 >
                   Contribute A Custom Amount
                 </button>
@@ -205,9 +222,8 @@ export default function Donate() {
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${
-                        errors.name ? "border-red-500" : "border-charcoal/15"
-                      }`}
+                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${errors.name ? "border-red-500" : "border-charcoal/15"
+                        }`}
                       {...register("name", { required: "Name is required" })}
                     />
                   </div>
@@ -220,9 +236,8 @@ export default function Donate() {
                     <input
                       type="email"
                       placeholder="your.email@domain.com"
-                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${
-                        errors.email ? "border-red-500" : "border-charcoal/15"
-                      }`}
+                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${errors.email ? "border-red-500" : "border-charcoal/15"
+                        }`}
                       {...register("email", {
                         required: "Email is required",
                         pattern: {
@@ -241,9 +256,8 @@ export default function Donate() {
                     <input
                       type="text"
                       placeholder="10-digit number"
-                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${
-                        errors.phone ? "border-red-500" : "border-charcoal/15"
-                      }`}
+                      className={`w-full px-3 py-2 border rounded-md text-xs focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral bg-[#FAF7F2]/30 text-charcoal transition-all ${errors.phone ? "border-red-500" : "border-charcoal/15"
+                        }`}
                       {...register("phone", {
                         required: "Phone is required",
                         pattern: { value: /^[0-9]{10}$/, message: "Must be 10 digits" }
@@ -315,7 +329,7 @@ export default function Donate() {
                 <button
                   type="button"
                   onClick={() => setDonateModalOpen(false)}
-                  className="w-full py-3 bg-navy hover:bg-navy-dark text-white font-bold text-xs uppercase tracking-widest rounded-md cursor-pointer transition-colors shadow-sm"
+                  className="w-full py-3 bg-coral hover:bg-coral-light text-white font-bold text-xs uppercase tracking-widest rounded-md cursor-pointer transition-colors shadow-sm hover:shadow-md"
                 >
                   Close Receipt
                 </button>

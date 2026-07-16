@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { CheckCircle2, IndianRupee, Loader2, Sparkles, X } from "lucide-react";
 
@@ -27,8 +27,8 @@ const campaigns: Campaign[] = [
   {
     id: "dog",
     category: "Injured Flyover Dog",
-    title: "Heal The Paws on Guwahati Bypass",
-    description: "Emergency support for dogs injured in road and flyover accidents on G.S. Road. Funding orthopedic surgeries and specialized vet care.",
+    title: "Heal The Paws on Tinsukia Bypass",
+    description: "Emergency support for dogs injured in road and flyover accidents on Tinsukia Bypass. Funding orthopedic surgeries and specialized vet care.",
     raised: 45000,
     goal: 60000,
     initialPercentage: 75
@@ -54,6 +54,7 @@ export default function ShelterTracker() {
   const [donationAmount, setDonationAmount] = useState<string>("1000");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const timeoutRef = useRef<NodeJS.Timeout[]>([]);
 
   // Sync state when tab changes
   useEffect(() => {
@@ -62,6 +63,14 @@ export default function ShelterTracker() {
     setLiveRaised(campaign.raised);
     setShowDonateForm(false);
     setIsSuccess(false);
+  }, [selectedTab]);
+
+  // Cleanup timeouts on unmount or tab change
+  useEffect(() => {
+    return () => {
+      timeoutRef.current.forEach(clearTimeout);
+      timeoutRef.current = [];
+    };
   }, [selectedTab]);
 
   // Calculations
@@ -73,20 +82,28 @@ export default function ShelterTracker() {
     const amountNum = parseFloat(donationAmount);
     if (isNaN(amountNum) || amountNum <= 0) return;
 
+    // Capture campaign ID at submit time to prevent stale closure
+    const submittedCampaignId = currentCampaign.id;
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    const timer1 = setTimeout(() => {
+      if (selectedTab !== submittedCampaignId) return; // Guard against tab switch
       setIsSubmitting(false);
       setIsSuccess(true);
       setLiveRaised(prev => prev + amountNum);
-      setTimeout(() => {
+
+      const timer2 = setTimeout(() => {
+        if (selectedTab !== submittedCampaignId) return;
         setIsSuccess(false);
         setShowDonateForm(false);
       }, 3000);
+      timeoutRef.current.push(timer2);
     }, 1500);
+    timeoutRef.current.push(timer1);
   };
 
   return (
-    <section id="tracker" className="py-24 bg-[#FCF8F5] relative overflow-hidden border-b border-charcoal/5">
+    <section id="tracker" className="py-16 md:py-24 bg-[#FCF8F5] relative overflow-hidden border-b border-charcoal/5">
       {/* Topographic Lines Background Pattern */}
       <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
         <svg className="w-full h-full" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +116,7 @@ export default function ShelterTracker() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Category Tabs */}
-        <div className="flex justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {campaigns.map((c) => (
             <button
               key={c.id}
@@ -156,7 +173,7 @@ export default function ShelterTracker() {
           {/* Right Column: Title, description, and white live tracker card */}
           <div className="lg:col-span-6 space-y-8 text-left">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-5xl font-serif font-black text-navy leading-[1.15] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-black text-navy leading-[1.15] tracking-tight">
                 {currentCampaign.title}
               </h2>
               <p className="text-sm md:text-base text-charcoal/70 leading-relaxed max-w-xl">
@@ -251,7 +268,7 @@ export default function ShelterTracker() {
                       <Sparkles className="h-4 w-4" /> {currentCampaign.category}
                     </h3>
                     <p className="text-xs text-charcoal/50 mt-1 leading-relaxed">
-                      Active community funding tracker for Guwahati chapter rescue operations.
+                      Active community funding tracker for Tinsukia chapter rescue operations.
                     </p>
                   </div>
 

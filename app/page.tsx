@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Intro from "@/components/Intro";
+// import Intro from "@/components/Intro";
 import Community from "@/components/Community";
 import Adopt from "@/components/Adopt";
 import AnimalModal from "@/components/AnimalModal";
@@ -11,6 +11,7 @@ import Volunteer from "@/components/Volunteer";
 import Donate from "@/components/Donate";
 import Footer from "@/components/Footer";
 import ShelterTracker from "@/components/ShelterTracker";
+import PawCursorTrail from "@/components/PawCursorTrail";
 import { usePathname } from "next/navigation";
 
 import { animals } from "@/data/animals";
@@ -102,7 +103,7 @@ export default function Home() {
       <Hero scrollSmoothTo={scrollSmoothTo} />
 
       {/* Intro section */}
-      <Intro scrollSmoothTo={scrollSmoothTo} />
+      {/* <Intro scrollSmoothTo={scrollSmoothTo} /> */}
 
       {/* Helping Animals, Building Community Section */}
       <Community scrollSmoothTo={scrollSmoothTo} />
@@ -139,6 +140,9 @@ export default function Home() {
 
       {/* Sticky Footer */}
       <Footer scrollSmoothTo={scrollSmoothTo} />
+
+      {/* Interactive Paw Cursor Trail */}
+      <PawCursorTrail />
     </div>
   );
 }

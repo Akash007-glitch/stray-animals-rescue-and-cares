@@ -54,9 +54,9 @@ export default function StatCounter({ target, label, suffix = "" }: StatCounterP
   return (
     <div
       ref={elementRef}
-      className="flex flex-col items-center justify-center p-6 bg-[#FAF7F2] border-2 border-terracotta/20 rounded-xl shadow-md transition-all duration-300 hover:border-terracotta/50"
+      className="flex flex-col items-center justify-center p-6 bg-white border border-beige-dark/65 rounded-2xl shadow-sm transition-all duration-300 hover:border-sage hover:shadow-md"
     >
-      <span className="text-4xl md:text-5xl font-serif font-bold text-terracotta mb-2">
+      <span className="text-4xl md:text-5xl font-serif font-bold text-forest mb-2">
         {count.toLocaleString()}{suffix}
       </span>
       <span className="text-sm md:text-base text-charcoal font-medium text-center">{label}</span>

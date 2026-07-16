@@ -32,7 +32,7 @@ export default function Footer({ scrollSmoothTo }: FooterProps) {
       {/* Main Content Area */}
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Card containing Poofyco branding */}
+          {/* Card containing S.A.R.C branding */}
           <div className="col-span-1 md:col-span-4 relative -mt-24 md:-mt-28 z-10 bg-[#2C2E63] p-8 md:p-9 rounded-[2rem] shadow-xl text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
             {/* Logo */}
             <div className="flex items-center gap-2 mb-6">
@@ -46,12 +46,12 @@ export default function Footer({ scrollSmoothTo }: FooterProps) {
                   <path d="M12 10c-3 0-5 2-5 5s2 4 5 4 5-1 5-4-2-5-5-5z" />
                 </svg>
               </span>
-              <span className="font-sans text-2xl font-bold tracking-tight text-white">Poofyco</span>
+              <span className="font-sans text-2xl font-bold tracking-tight text-white">S.A.R.C</span>
             </div>
 
             {/* Description */}
             <p className="text-xs text-white/80 leading-relaxed mb-6 font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              S.A.R.C is Tinsukia&apos;s leading street animal rescue network, providing around-the-clock emergency field aid, foster circles, and community care to protect the voiceless.
             </p>
 
             {/* Social Media Icons */}
@@ -138,23 +138,23 @@ export default function Footer({ scrollSmoothTo }: FooterProps) {
             <ul className="space-y-3.5 text-xs font-semibold text-white/85">
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-coral shrink-0" />
-                <a href="tel:+628152254239" className="hover:text-coral transition-colors duration-200">
-                  (+62) 8152 254 239
+                <a href="tel:+919217377060" className="hover:text-coral transition-colors duration-200">
+                  (+91) 92173 77060
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-coral shrink-0" />
-                <a href="mailto:poofyco@support.site" className="hover:text-coral transition-colors duration-200">
-                  poofyco@support.site
+                <a href="mailto:strayanimalsrescueandcare@gmail.com" className="hover:text-coral transition-colors duration-200">
+                  strayanimalsrescueandcare@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-coral shrink-0 mt-0.5" />
-                <span className="leading-relaxed">Jl. Sunset Road No.815, DPS, Bali</span>
+                <span className="leading-relaxed">Tinsukia, Assam, India</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-coral shrink-0" />
-                <span>Mon-Sat : 8.00 AM to 07.00 PM</span>
+                <span>24/7 Volunteer Emergency Help</span>
               </li>
             </ul>
           </div>
@@ -162,10 +162,12 @@ export default function Footer({ scrollSmoothTo }: FooterProps) {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="bg-coral py-3 text-center">
+      <div className="bg-coral py-3 text-center flex items-center justify-center gap-1.5">
+        <span className="text-white text-xs select-none">🐾</span>
         <p className="text-white text-[10px] md:text-xs font-bold tracking-wide">
-          Copyright © 2024 Poofyco | Powered by Poofyco
+          Copyright © 2024 S.A.R.C | Powered by S.A.R.C
         </p>
+        <span className="text-white text-xs select-none">🐾</span>
       </div>
     </footer>
   );

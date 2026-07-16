@@ -20,16 +20,36 @@
   --color-navy-dark: #060724;
   --color-coral: #E5837A;
   --color-coral-light: #F7A399;
+
+  /* Premium Earthy NGO Palette */
+  --color-forest: #2D4A3E;
+  --color-forest-dark: #1E322A;
+  --color-forest-light: #4A6E5D;
+  --color-sage: #8F9E8B;
+  --color-sage-light: #A5B4A1;
+  --color-sage-bg: #EAECE8;
+  --color-sage-cream: #F1F4F0;
+  --color-beige: #F5EBE0;
+  --color-beige-light: #FAF6F0;
+  --color-beige-dark: #E6D5C3;
   
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-ubuntu), 'Ubuntu', sans-serif;
+  --font-serif: var(--font-ubuntu), 'Ubuntu', sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-ubuntu), 'Ubuntu', sans-serif;
 }
+
+/* Staggered entry animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
 
 /* Base style resets and scroll transitions */
 html {
@@ -51,3 +71,44 @@ html {
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease forwards;
 }
+
+/* Custom Floating Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
+

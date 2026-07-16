@@ -47,12 +47,12 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
   };
 
   return (
-    <section className="py-24 bg-white border-b border-charcoal/5">
+    <section className="py-16 md:py-24 bg-white border-b border-charcoal/5">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-16">
           <div className="md:col-span-7">
-            <h2 className="text-4xl md:text-5xl lg:text-[50px] font-serif font-black text-navy leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-black text-navy leading-[1.15] tracking-tight">
               Helping Animals,
               <br />
               Building Community
@@ -67,7 +67,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
             <button
               id="see-more-community-btn"
               onClick={() => scrollSmoothTo("about")}
-              className="px-8 py-3.5 bg-navy hover:bg-navy-dark text-white font-bold tracking-wider text-xs rounded-full shadow-lg transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
+              className="px-8 py-3.5 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-lg shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
             >
               See More
             </button>
@@ -81,6 +81,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
               src="/images/community_shelter_dog.png"
               alt="Volunteers playing with a dog at shelter"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -89,6 +90,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
               src="/images/vets_examining_street_dog.png"
               alt="Veterinarians examining a street dog"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -97,6 +99,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
               src="/images/volunteers_petting_beagle.png"
               alt="Diverse group petting a happy beagle dog"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -117,6 +120,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
                   src="/images/community_shelter_dog.png"
                   alt="Volunteers playing with a dog at shelter"
                   fill
+                  sizes="100vw"
                   className="object-cover"
                 />
               </div>
@@ -128,6 +132,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
                   src="/images/vets_examining_street_dog.png"
                   alt="Veterinarians examining a street dog"
                   fill
+                  sizes="100vw"
                   className="object-cover"
                 />
               </div>
@@ -139,6 +144,7 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
                   src="/images/volunteers_petting_beagle.png"
                   alt="Diverse group petting a happy beagle dog"
                   fill
+                  sizes="100vw"
                   className="object-cover"
                 />
               </div>
@@ -161,9 +167,8 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
                     });
                   }
                 }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? "w-6 bg-coral" : "w-2 bg-charcoal/20"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-6 bg-coral" : "w-2 bg-charcoal/20"
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}

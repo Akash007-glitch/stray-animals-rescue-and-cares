@@ -24,7 +24,7 @@ export default function Navbar({
 
   const handleNavClick = (target: string) => {
     setMobileMenuOpen(false);
-    
+
     // Ensure we resolve the path correctly even during hydration or client router lags
     const currentPath = pathname || (typeof window !== "undefined" ? window.location.pathname : "/");
 
@@ -62,7 +62,7 @@ export default function Navbar({
                 <MapPin className="h-3.5 w-3.5 text-coral" /> Tinsukia, Assam
               </span>
             </div>
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               {["facebook", "twitter", "youtube", "instagram"].map((social) => (
                 <a
                   key={social}
@@ -75,7 +75,7 @@ export default function Navbar({
                   {social === "instagram" && "i"}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       )}
@@ -109,30 +109,46 @@ export default function Navbar({
             <nav className="hidden md:flex items-center gap-8 font-semibold">
               {[
                 { label: "Home", target: "home" },
-                { label: "Live Tracker", target: "tracker" },
+                // { label: "Live Tracker", target: "tracker" },
                 { label: "About Us", target: "about" },
                 { label: "Service", target: "adopt" },
-                { label: "Features", target: "volunteer" },
-                { label: "Pages", target: "donate" }
-              ].map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => handleNavClick(item.target)}
-                  className={`text-sm tracking-wide transition-colors hover:text-coral cursor-pointer ${isActive(item.target)
-                    ? "text-coral font-bold border-b-2 border-coral pb-0.5"
-                    : "text-charcoal/80"
+                { label: "Volunteer", target: "volunteer" },
+
+              ].map((item) => {
+                const active = isActive(item.target);
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => handleNavClick(item.target)}
+                    className={`group relative text-sm tracking-wide transition-colors hover:text-coral cursor-pointer flex items-center gap-1.5 py-1 ${
+                      active ? "text-coral font-bold" : "text-charcoal/80"
                     }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+                  >
+                    <span className={`transition-all duration-300 transform ${
+                      active 
+                        ? "scale-100 rotate-0 text-coral" 
+                        : "scale-0 -rotate-12 opacity-0 group-hover:scale-100 group-hover:rotate-12 group-hover:opacity-100 text-coral/75"
+                    }`}>
+                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <circle cx="8" cy="6" r="2" />
+                        <circle cx="12" cy="4.5" r="2" />
+                        <circle cx="16" cy="6" r="2" />
+                        <circle cx="7" cy="11" r="1.8" />
+                        <circle cx="17" cy="11" r="1.8" />
+                        <path d="M12 9.5c-2.2 0-3.5 1.5-3.5 3.5 0 2 1.2 3 3.5 3s3.5-1 3.5-3c0-2-1.3-3.5-3.5-3.5z" />
+                      </svg>
+                    </span>
+                    <span>{item.label}</span>
+                  </button>
+                );
+              })}
             </nav>
 
             {/* Contact Us Nav Button */}
             <div className="hidden md:block">
               <button
                 onClick={() => handleNavClick("volunteer")}
-                className="text-xs uppercase tracking-widest font-black px-6 py-3 rounded-full border-2 border-navy text-navy hover:bg-[#0B0E37] hover:text-white transition-all cursor-pointer"
+                className="px-6 py-3 bg-coral hover:bg-coral-light text-white font-bold uppercase tracking-wider text-xs rounded-full shadow-md shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
               >
                 Contact Us
               </button>
