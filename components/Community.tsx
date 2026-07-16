@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { PawPrint } from "lucide-react";
 
 interface CommunityProps {
   scrollSmoothTo: (id: string) => void;
@@ -67,9 +68,10 @@ export default function Community({ scrollSmoothTo }: CommunityProps) {
             <button
               id="see-more-community-btn"
               onClick={() => scrollSmoothTo("about")}
-              className="px-8 py-3.5 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-lg shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
+              className="px-8 py-3.5 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-lg shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0 flex items-center gap-2"
             >
-              See More
+              <span>See More</span>
+              <PawPrint className="w-4 h-4 fill-current" />
             </button>
           </div>
         </div>

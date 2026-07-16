@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PawPrint } from "lucide-react";
 import StatCounter from "./StatCounter";
 
 interface AboutProps {
@@ -158,8 +158,8 @@ export default function About({ scrollSmoothTo }: AboutProps) {
                     onClick={() => scrollSmoothTo("volunteer")}
                     className="group w-full md:w-auto inline-flex items-center justify-center gap-2 bg-coral text-white hover:bg-coral-light font-sans font-bold px-7 py-4 rounded-full shadow-md hover:shadow-lg hover:shadow-coral/30 hover:hover:shadow-coral/45 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm tracking-wide cursor-pointer"
                   >
-                    Join Our Mission
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <span>Join Our Mission</span>
+                    <PawPrint className="h-4 w-4 fill-current" />
                   </button>
                 </div>
 

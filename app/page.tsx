@@ -10,7 +10,6 @@ import AnimalModal from "@/components/AnimalModal";
 import Volunteer from "@/components/Volunteer";
 import Donate from "@/components/Donate";
 import Footer from "@/components/Footer";
-import ShelterTracker from "@/components/ShelterTracker";
 import PawCursorTrail from "@/components/PawCursorTrail";
 import { usePathname } from "next/navigation";
 
@@ -31,6 +30,23 @@ export default function Home() {
   const [locationFilter, setLocationFilter] = useState<string>("all");
   const [selectedAnimal, setSelectedAnimal] = useState<Animal | null>(null);
 
+  const scrollSmoothTo = (id: string) => {
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; // height of sticky header
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   // Scroll spy & solid navbar shift
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +58,7 @@ export default function Home() {
       }
 
       // Scroll Spy
-      const sections = ["home", "tracker", "about", "adopt", "volunteer", "donate"];
+      const sections = ["home", "about", "adopt", "volunteer", "donate"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -63,30 +79,27 @@ export default function Home() {
 
   // Handle deep-linking to sections from other pages when route changes
   useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        scrollSmoothTo(hash);
+      }
+    };
+
+    // Handle initial hash check on mount/pathname change
     if (window.location.hash) {
       const hash = window.location.hash.substring(1);
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         scrollSmoothTo(hash);
-      }, 500);
+      }, 400); // Wait slightly for page components to mount and stabilize
+      return () => clearTimeout(timer);
     }
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, [pathname]);
-
-  const scrollSmoothTo = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // height of sticky header
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
 
   return (
     <div className="relative min-h-screen flex flex-col font-sans selection:bg-terracotta selection:text-cream">
@@ -108,8 +121,7 @@ export default function Home() {
       {/* Helping Animals, Building Community Section */}
       <Community scrollSmoothTo={scrollSmoothTo} />
 
-      {/* Live Rescue Tracker & Shelter Donation */}
-      <ShelterTracker />
+
 
       {/* Adopt Section */}
       {/* <Adopt
@@ -132,11 +144,14 @@ export default function Home() {
         />
       )}
 
-      {/* Volunteer Registration Form */}
-      <Volunteer />
+
 
       {/* Donate pricing grid & mock Razorpay payment flow */}
       <Donate />
+
+      {/* Volunteer Registration Form */}
+      <Volunteer />
+
 
       {/* Sticky Footer */}
       <Footer scrollSmoothTo={scrollSmoothTo} />

@@ -26,7 +26,7 @@ export default function AboutPage() {
   }, []);
 
   const scrollSmoothTo = (id: string) => {
-    router.push(`/#${id}`);
+    router.push(`/#${id}`, { scroll: false });
   };
 
   return (

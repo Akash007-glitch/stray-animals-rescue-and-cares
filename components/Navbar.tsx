@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
+import { Phone, Mail, MapPin, Menu, X, PawPrint } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 interface NavbarProps {
@@ -34,7 +34,7 @@ export default function Navbar({
       if (currentPath === "/") {
         scrollSmoothTo(target);
       } else {
-        router.push(`/#${target}`);
+        router.push(`/#${target}`, { scroll: false });
       }
     }
   };
@@ -148,9 +148,10 @@ export default function Navbar({
             <div className="hidden md:block">
               <button
                 onClick={() => handleNavClick("volunteer")}
-                className="px-6 py-3 bg-coral hover:bg-coral-light text-white font-bold uppercase tracking-wider text-xs rounded-full shadow-md shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0"
+                className="px-6 py-3 bg-coral hover:bg-coral-light text-white font-bold uppercase tracking-wider text-xs rounded-full shadow-md shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0 flex items-center gap-2"
               >
-                Contact Us
+                <span>Contact Us</span>
+                <PawPrint className="w-4 h-4 fill-current" />
               </button>
             </div>
 
@@ -171,7 +172,6 @@ export default function Navbar({
         <div className="md:hidden fixed inset-x-0 top-[68px] bg-[#FAF7F2] border-b border-terracotta/20 shadow-xl py-6 px-6 flex flex-col gap-4 animate-fade-in-up">
           {[
             { label: "Home", target: "home" },
-            { label: "Live Tracker", target: "tracker" },
             { label: "About Us", target: "about" },
             { label: "Service", target: "adopt" },
             { label: "Features", target: "volunteer" },
@@ -188,9 +188,10 @@ export default function Navbar({
           ))}
           <button
             onClick={() => handleNavClick("volunteer")}
-            className="mt-2 w-full py-3 text-center uppercase tracking-widest text-sm font-bold bg-coral text-white rounded-lg hover:bg-coral-light cursor-pointer"
+            className="mt-2 w-full py-3 text-center uppercase tracking-widest text-sm font-bold bg-coral text-white rounded-lg hover:bg-coral-light cursor-pointer flex items-center justify-center gap-2"
           >
-            Contact Us
+            <span>Contact Us</span>
+            <PawPrint className="w-4 h-4 fill-current" />
           </button>
         </div>
       )}

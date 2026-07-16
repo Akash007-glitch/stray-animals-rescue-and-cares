@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { User, Mail, Phone, Loader2, ArrowRight, CheckCircle2 } from "lucide-react";
+import { User, Mail, Phone, Loader2, ArrowRight, CheckCircle2, PawPrint } from "lucide-react";
 import { VolunteerFormData } from "@/types";
 
 export default function Volunteer() {
@@ -52,9 +52,10 @@ export default function Volunteer() {
               </p>
               <button
                 onClick={() => setVolunteerSubmitted(false)}
-                className="mt-6 text-xs uppercase tracking-wider font-bold text-coral hover:text-coral-light transition-colors cursor-pointer"
+                className="mt-6 text-xs uppercase tracking-wider font-bold text-coral hover:text-coral-light transition-colors cursor-pointer flex items-center justify-center gap-1.5 mx-auto"
               >
-                Submit Another Form
+                <span>Submit Another Form</span>
+                <PawPrint className="h-3.5 w-3.5 fill-current" />
               </button>
             </div>
           ) : (
@@ -190,7 +191,8 @@ export default function Volunteer() {
                     </>
                   ) : (
                     <>
-                      Submit Application <ArrowRight className="h-4 w-4" />
+                      <span>Submit Application</span>
+                      <PawPrint className="h-4 w-4 fill-current" />
                     </>
                   )}
                 </button>

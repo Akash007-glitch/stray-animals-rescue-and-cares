@@ -22,7 +22,7 @@ export default function Footer({ scrollSmoothTo }: FooterProps) {
       if (currentPath === "/") {
         scrollSmoothTo(target);
       } else {
-        router.push(`/#${target}`);
+        router.push(`/#${target}`, { scroll: false });
       }
     }
   };
@@ -118,7 +118,7 @@ export default function Footer({ scrollSmoothTo }: FooterProps) {
                 { name: "Terms & Condition", target: "home" },
                 { name: "Privacy Policy", target: "home" },
                 { name: "Support", target: "volunteer" },
-                { name: "FAQ's", target: "tracker" }
+                { name: "FAQ's", target: "home" }
               ].map((link, idx) => (
                 <li key={idx}>
                   <button

@@ -12,7 +12,7 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative bg-gradient-to-b from-[#EBF0F6] via-[#FAF7F2] to-[#EBF0F6]/40 lg:h-[100vh] lg:min-h-[820px] pt-24 xs:pt-28 md:pt-36 lg:pt-44 pb-12 lg:pb-0 flex flex-col justify-between overflow-hidden"
+      className="relative bg-gradient-to-b from-[#EBF0F6] via-[#FAF7F2] to-[#EBF0F6]/40 lg:h-[95vh] lg:min-h-[800px] pt-24 xs:pt-28 md:pt-36 lg:pt-44 pb-12 lg:pb-0 flex flex-col justify-between overflow-hidden"
     >
       {/* Mobile/Tablet: Clean background to keep text readable. Topographic line SVG overlay will display. */}
 
@@ -50,9 +50,9 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 w-full">
             <button
               onClick={() => scrollSmoothTo("donate")}
-              className="px-6 py-3 sm:px-8 sm:py-4 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-xs rounded-full shadow-md shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0 flex items-center gap-2"
+              className="px-8 py-4 sm:px-10 sm:py-5 bg-coral hover:bg-coral-light text-white font-bold tracking-wider text-sm rounded-full shadow-md shadow-coral/30 hover:shadow-lg hover:shadow-coral/45 transition-all cursor-pointer hover:translate-y-[-2px] active:translate-y-0 flex items-center gap-2.5"
             >
-              <PawPrint className="w-4.5 h-4.5 fill-current" />
+              <PawPrint className="w-5 h-5 fill-current" />
               <span>Donate Now</span>
             </button>
             {/* <button
@@ -83,7 +83,7 @@ export default function Hero({ scrollSmoothTo }: HeroProps) {
             {/* Pink floating leaf-like sparks/paws on the left */}
             <div className="absolute left-[-15px] xs:left-[-25px] top-[18%] xs:top-[22%] flex flex-col items-center gap-3 animate-float-delayed z-20">
               <PawPrint className="w-8 h-8 xs:w-10 xs:h-10 text-coral fill-coral/10 opacity-75 rotate-[-20deg] drop-shadow-sm" />
-              
+
               {/* Simple clean double-leaf sprout outline SVG in coral */}
               <svg className="w-7 h-7 xs:w-9 xs:h-9 text-coral/60 ml-2 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 22C2 22 8 20 12 16C16 12 18 6 18 6" />

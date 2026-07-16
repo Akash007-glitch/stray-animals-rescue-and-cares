@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 interface PawPoint {
   id: number;
@@ -12,8 +12,9 @@ interface PawPoint {
 
 export default function PawCursorTrail() {
   const [paws, setPaws] = useState<PawPoint[]>([]);
-  const [lastPos, setLastPos] = useState({ x: 0, y: 0 });
-  const [leftSide, setLeftSide] = useState(true);
+  const lastPosRef = useRef({ x: 0, y: 0 });
+  const leftSideRef = useRef(true);
+  const idCounterRef = useRef(0);
 
   useEffect(() => {
     // Only enable trail on devices with mouse/pointer capabilities
@@ -22,24 +23,19 @@ export default function PawCursorTrail() {
       return (
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
-        (navigator as any).msMaxTouchPoints > 0
+        !!(navigator as unknown as { msMaxTouchPoints?: number }).msMaxTouchPoints
       );
     };
 
     if (isTouchDevice()) return;
 
-    let idCounter = 0;
-
     const handleMouseMove = (e: MouseEvent) => {
-      const scrollX = window.scrollX;
-      const scrollY = window.scrollY;
-      
       const pageX = e.pageX;
       const pageY = e.pageY;
 
       // Distance from last paw
-      const dx = pageX - lastPos.x;
-      const dy = pageY - lastPos.y;
+      const dx = pageX - lastPosRef.current.x;
+      const dy = pageY - lastPosRef.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       // Only drop a paw if we moved enough (e.g. 50px) to simulate steps
@@ -48,8 +44,8 @@ export default function PawCursorTrail() {
         const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90; // +90 because default paw faces up
         
         // Alternate sides to simulate walking
-        const side = leftSide ? "left" : "right";
-        setLeftSide(!leftSide);
+        const side = leftSideRef.current ? "left" : "right";
+        leftSideRef.current = !leftSideRef.current;
 
         // Apply a small offset perpendicular to the direction of movement
         const perpAngle = (angle - 90) * (Math.PI / 180);
@@ -58,7 +54,7 @@ export default function PawCursorTrail() {
         const offsetY = Math.sin(perpAngle + Math.PI / 2) * offsetDist * (side === "left" ? -1 : 1);
 
         const newPaw: PawPoint = {
-          id: idCounter++,
+          id: idCounterRef.current++,
           x: pageX + offsetX,
           y: pageY + offsetY,
           angle,
@@ -66,7 +62,7 @@ export default function PawCursorTrail() {
         };
 
         setPaws((prev) => [...prev.slice(-15), newPaw]); // limit trail length to 15 paws
-        setLastPos({ x: pageX, y: pageY });
+        lastPosRef.current = { x: pageX, y: pageY };
       }
     };
 
@@ -75,7 +71,7 @@ export default function PawCursorTrail() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [lastPos, leftSide]);
+  }, []);
 
   // Clean up old paws periodically
   useEffect(() => {

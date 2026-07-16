@@ -46,24 +46,18 @@ const campaigns: Campaign[] = [
 
 export default function ShelterTracker() {
   const [selectedTab, setSelectedTab] = useState<string>("cat");
-  const [currentCampaign, setCurrentCampaign] = useState<Campaign>(campaigns[0]);
+  const [campaignsState, setCampaignsState] = useState<Campaign[]>(campaigns);
   
   // Tracking live changes
-  const [liveRaised, setLiveRaised] = useState<number>(currentCampaign.raised);
   const [showDonateForm, setShowDonateForm] = useState<boolean>(false);
   const [donationAmount, setDonationAmount] = useState<string>("1000");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout[]>([]);
 
-  // Sync state when tab changes
-  useEffect(() => {
-    const campaign = campaigns.find(c => c.id === selectedTab) || campaigns[0];
-    setCurrentCampaign(campaign);
-    setLiveRaised(campaign.raised);
-    setShowDonateForm(false);
-    setIsSuccess(false);
-  }, [selectedTab]);
+  // Derived values
+  const currentCampaign = campaignsState.find(c => c.id === selectedTab) || campaignsState[0];
+  const liveRaised = currentCampaign.raised;
 
   // Cleanup timeouts on unmount or tab change
   useEffect(() => {
@@ -82,18 +76,17 @@ export default function ShelterTracker() {
     const amountNum = parseFloat(donationAmount);
     if (isNaN(amountNum) || amountNum <= 0) return;
 
-    // Capture campaign ID at submit time to prevent stale closure
     const submittedCampaignId = currentCampaign.id;
     setIsSubmitting(true);
 
     const timer1 = setTimeout(() => {
-      if (selectedTab !== submittedCampaignId) return; // Guard against tab switch
       setIsSubmitting(false);
       setIsSuccess(true);
-      setLiveRaised(prev => prev + amountNum);
+      setCampaignsState(prev =>
+        prev.map(c => (c.id === submittedCampaignId ? { ...c, raised: c.raised + amountNum } : c))
+      );
 
       const timer2 = setTimeout(() => {
-        if (selectedTab !== submittedCampaignId) return;
         setIsSuccess(false);
         setShowDonateForm(false);
       }, 3000);
@@ -117,10 +110,14 @@ export default function ShelterTracker() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {campaigns.map((c) => (
+          {campaignsState.map((c) => (
             <button
               key={c.id}
-              onClick={() => setSelectedTab(c.id)}
+              onClick={() => {
+                setSelectedTab(c.id);
+                setShowDonateForm(false);
+                setIsSuccess(false);
+              }}
               className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer ${
                 selectedTab === c.id
                   ? "bg-navy text-white scale-105"
