@@ -81,6 +81,12 @@ export default function Donate() {
             <div className="lg:col-span-7 bg-white rounded-3xl p-8 shadow-sm border border-charcoal/5 flex flex-col justify-between gap-8">
               <div>
                 <h3 className="text-xl font-serif font-bold text-charcoal mb-2">Make a Donation</h3>
+                <div className="bg-[#FAF7F2] border border-coral/20 rounded-2xl p-4 mb-4 text-xs md:text-sm text-charcoal/80 font-medium flex items-start gap-3">
+                  <span className="text-lg leading-none select-none">💡</span>
+                  <p>
+                    <strong>Why Support Us?</strong> Every penny of donation helps us rescue one animal from the street. Join us today and be a part of this great cause.
+                  </p>
+                </div>
                 <p className="text-sm text-charcoal/65">Choose an amount to give today.</p>
               </div>
 

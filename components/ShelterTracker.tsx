@@ -261,7 +261,7 @@ export default function ShelterTracker() {
                 <div className="space-y-6">
                   {/* Header Subtitle */}
                   <div>
-                    <h3 className="text-[#E5837A] font-sans font-black text-sm uppercase tracking-widest flex items-center gap-1.5">
+                    <h3 className="text-coral font-sans font-black text-sm uppercase tracking-widest flex items-center gap-1.5">
                       <Sparkles className="h-4 w-4" /> {currentCampaign.category}
                     </h3>
                     <p className="text-xs text-charcoal/50 mt-1 leading-relaxed">

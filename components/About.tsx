@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, PawPrint } from "lucide-react";
+import { ArrowRight, PawPrint, Target, Eye, Heart } from "lucide-react";
 import StatCounter from "./StatCounter";
 
 interface AboutProps {
@@ -191,7 +191,78 @@ export default function About({ scrollSmoothTo }: AboutProps) {
               </div>
             </div>
           </div>
+        </div>
 
+        {/* Mission, Vision & Values Section */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Mission Card */}
+          <div className="bg-white border border-beige-dark/50 rounded-3xl p-8 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mb-6 text-forest group-hover:scale-110 transition-transform duration-300">
+              <Target className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-serif font-bold text-forest mb-3">Our Mission</h3>
+            <p className="text-charcoal/80 text-sm leading-relaxed font-sans">
+              Rescue, treat, rehabilitate, vaccinate, sterilize, and promote responsible animal welfare.
+            </p>
+          </div>
+
+          {/* Vision Card */}
+          <div className="bg-white border border-beige-dark/50 rounded-3xl p-8 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="w-12 h-12 rounded-full bg-coral/10 flex items-center justify-center mb-6 text-coral group-hover:scale-110 transition-transform duration-300">
+              <Eye className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-serif font-bold text-forest mb-3">Our Vision</h3>
+            <p className="text-charcoal/80 text-sm leading-relaxed font-sans">
+              A future where no stray animal suffers from neglect, abuse, or lack of medical care.
+            </p>
+          </div>
+
+          {/* Values Card */}
+          <div className="bg-white border border-beige-dark/50 rounded-3xl p-8 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="w-12 h-12 rounded-full bg-amber/10 flex items-center justify-center mb-6 text-amber group-hover:scale-110 transition-transform duration-300">
+              <Heart className="h-6 w-6 fill-current" />
+            </div>
+            <h3 className="text-xl font-serif font-bold text-forest mb-3">Our Values</h3>
+            <p className="text-charcoal/80 text-sm leading-relaxed font-sans">
+              Compassion, Transparency, Dedication, Community, and Respect for all life.
+            </p>
+          </div>
+        </div>
+
+        {/* Our Journey Timeline */}
+        <div className="mt-28 bg-white/40 border border-beige-dark/40 rounded-[32px] p-8 md:p-12 shadow-sm">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs uppercase tracking-widest text-forest-light font-extrabold block mb-2">
+              Our Journey
+            </span>
+            <h3 className="text-3xl font-serif font-bold text-forest">Growing Step by Step</h3>
+            <div className="w-24 h-1 bg-coral/60 mx-auto mt-3 rounded-full" />
+          </div>
+          
+          <div className="relative border-l-2 border-sage/30 ml-4 md:ml-0 md:border-l-0 md:flex md:justify-between md:items-start gap-4">
+            {/* Horizontal Line for Desktop */}
+            <div className="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-sage/30 z-0" />
+            
+            {[
+              { year: "2020", title: "Started by Students", desc: "A simple group of students coming together to feed and care for strays in their neighborhoods." },
+              { year: "2021", title: "Registered Trust", desc: "Formalizing our mission to scale operations, build structure, and coordinate rescue efforts." },
+              { year: "2022", title: "Hundreds of Rescues", desc: "Expanding medical aid, tackling critical street surgeries, and coordinating emergency rescues." },
+              { year: "2023", title: "Awareness Programs", desc: "Conducting community outreach, school visits, and promoting responsible animal welfare." },
+              { year: "2024+", title: "Growing Network", desc: "Expanding volunteer network and fostering community-wide stray advocacy." }
+            ].map((step, idx) => (
+              <div key={idx} className="relative z-10 flex md:flex-col items-start md:items-center text-left md:text-center mb-10 last:mb-0 md:mb-0 md:flex-1 group">
+                {/* Timeline node */}
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-beige border-2 border-sage text-forest flex items-center justify-center shadow-xs group-hover:bg-forest group-hover:text-white transition-all duration-300 mb-4 md:mx-auto">
+                  <PawPrint className="w-5 h-5 fill-current" />
+                </div>
+                <div className="ml-4 md:ml-0">
+                  <span className="text-xs font-bold text-coral uppercase tracking-wide block">{step.year}</span>
+                  <h4 className="font-serif font-bold text-forest text-base mt-0.5">{step.title}</h4>
+                  <p className="text-charcoal/70 text-xs mt-1.5 max-w-[200px] md:mx-auto leading-relaxed font-sans">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* IMPACT COUNTERS */}

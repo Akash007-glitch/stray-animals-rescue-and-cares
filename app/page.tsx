@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-// import Intro from "@/components/Intro";
+import Intro from "@/components/Intro";
 import Community from "@/components/Community";
 import Adopt from "@/components/Adopt";
 import AnimalModal from "@/components/AnimalModal";
 import Volunteer from "@/components/Volunteer";
 import Donate from "@/components/Donate";
+import RescueStories from "@/components/RescueStories";
 import Footer from "@/components/Footer";
 import PawCursorTrail from "@/components/PawCursorTrail";
 import { usePathname } from "next/navigation";
@@ -116,10 +117,12 @@ export default function Home() {
       <Hero scrollSmoothTo={scrollSmoothTo} />
 
       {/* Intro section */}
-      {/* <Intro scrollSmoothTo={scrollSmoothTo} /> */}
+      <Intro scrollSmoothTo={scrollSmoothTo} />
 
       {/* Helping Animals, Building Community Section */}
-      <Community scrollSmoothTo={scrollSmoothTo} />
+      {/* <Community scrollSmoothTo={scrollSmoothTo} /> */}
+
+
 
 
 
@@ -148,6 +151,9 @@ export default function Home() {
 
       {/* Donate pricing grid & mock Razorpay payment flow */}
       <Donate />
+
+      {/* Rescue Stories Carousel Section */}
+      <RescueStories />
 
       {/* Volunteer Registration Form */}
       <Volunteer />
